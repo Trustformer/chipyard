@@ -70,7 +70,14 @@ include $(base_dir)/generators/ibex/ibex.mk
 include $(base_dir)/generators/ara/ara.mk
 include $(base_dir)/generators/tracegen/tracegen.mk
 include $(base_dir)/generators/nvdla/nvdla.mk
+# radiance.mk unconditionally puts two Vortex package sources on the Verilator
+# command line (EXTRA_SIM_PREPROC_DEFINES), so *every* config fails to build
+# unless generators/radiance/src/main/resources/vsrc/vortex -- a ~500 MB nested
+# submodule -- is checked out, even when nothing in the design uses radiance.
+# Skip the fragment when that submodule is absent; with it present, nothing changes.
+ifneq ($(wildcard $(base_dir)/generators/radiance/src/main/resources/vsrc/vortex/third_party/fpnew/src/fpnew_pkg.sv),)
 include $(base_dir)/generators/radiance/radiance.mk
+endif
 include $(base_dir)/tools/torture.mk
 
 #########################################################################################

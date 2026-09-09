@@ -13,3 +13,15 @@ class TFCustomCounterConfig extends Config(
   new freechips.rocketchip.rocket.WithNHugeCores(1) ++
   new chipyard.config.AbstractConfig)
 // DOC include end: CustomCounterConfig
+
+// DOC include start: LockboxTriesConfig
+// NOTE: no `_` in the config class name -- chipyard splits CONFIG on `_` to stack
+// config fragments, so `TFExample_LockboxTriesConfig` is looked up as
+// `TFExample` ++ `LockboxTriesConfig` and fails with ClassNotFoundException.
+// The paper's running example (coq/Examples/LockboxTries.v) as an MMIO peripheral
+// at 0x4000, next to a single Rocket core.
+class TFLockboxTriesConfig extends Config(
+  new trustformer.WithExample_LockboxTries(address=0x4000) ++
+  new freechips.rocketchip.rocket.WithNHugeCores(1) ++
+  new chipyard.config.AbstractConfig)
+// DOC include end: LockboxTriesConfig
