@@ -25,3 +25,14 @@ class TFLockboxTriesConfig extends Config(
   new freechips.rocketchip.rocket.WithNHugeCores(1) ++
   new chipyard.config.AbstractConfig)
 // DOC include end: LockboxTriesConfig
+
+// DOC include start: MarsConfig
+// The one-action MARS (coq/Examples/Mars/Spec.v) at 0x4000 next to a single
+// Rocket core. Its SHA-256 and HMAC IPs, Primary Seed and init request live in
+// trustformer.Example_MarsPlatform, off the memory map.
+class TFMarsConfig extends Config(
+  new trustformer.WithExample_Mars(address=0x4000) ++
+  new trustformer.WithMarsSeed() ++
+  new freechips.rocketchip.rocket.WithNHugeCores(1) ++
+  new chipyard.config.AbstractConfig)
+// DOC include end: MarsConfig

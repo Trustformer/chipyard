@@ -87,6 +87,7 @@ add_executable(mt-hello mt-hello.c)
 add_executable(symmetric symmetric.c)
 add_executable(custom_ctr custom_ctr.c)
 add_executable(lockbox lockbox.c)
+add_executable(mars mars.c)
 
 #################################
 # Disassembly
@@ -127,6 +128,7 @@ add_dump_target(mt-hello)
 add_dump_target(symmetric)
 add_dump_target(custom_ctr)
 add_dump_target(lockbox)
+add_dump_target(mars)
 
 # Add custom command to generate spiflash.img from spiflash.py
 add_custom_command(
