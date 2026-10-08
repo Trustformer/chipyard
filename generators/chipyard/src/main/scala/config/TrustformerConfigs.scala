@@ -36,3 +36,14 @@ class TFMarsConfig extends Config(
   new freechips.rocketchip.rocket.WithNHugeCores(1) ++
   new chipyard.config.AbstractConfig)
 // DOC include end: MarsConfig
+
+// DOC include start: MarsV2Config
+// MarsV2 (coq/Examples/MarsV2/Spec.v) at 0x4000 next to a single Rocket core;
+// its IPs, Primary Seed, init request and fault input live in
+// trustformer.Example_MarsV2Platform, off the memory map.
+class TFMarsV2Config extends Config(
+  new trustformer.WithExample_MarsV2(address=0x4000) ++
+  new trustformer.WithMarsSeed() ++
+  new freechips.rocketchip.rocket.WithNHugeCores(1) ++
+  new chipyard.config.AbstractConfig)
+// DOC include end: MarsV2Config

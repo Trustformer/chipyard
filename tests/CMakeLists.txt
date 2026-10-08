@@ -88,6 +88,7 @@ add_executable(symmetric symmetric.c)
 add_executable(custom_ctr custom_ctr.c)
 add_executable(lockbox lockbox.c)
 add_executable(mars mars.c)
+add_executable(mars_v2 mars_v2.c)
 
 #################################
 # Disassembly
@@ -129,6 +130,7 @@ add_dump_target(symmetric)
 add_dump_target(custom_ctr)
 add_dump_target(lockbox)
 add_dump_target(mars)
+add_dump_target(mars_v2)
 
 # Add custom command to generate spiflash.img from spiflash.py
 add_custom_command(

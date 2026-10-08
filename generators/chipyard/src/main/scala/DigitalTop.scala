@@ -39,6 +39,7 @@ class DigitalTop(implicit p: Parameters) extends ChipyardSystem
   with trustformer.CanHavePeripheryCustomCounter // Enables optionally adding the custom counter
   with trustformer.CanHavePeripheryExample_LockboxTries // Enables optionally adding the paper's lockbox example
   with trustformer.CanHavePeripheryExample_Mars // Enables optionally adding the one-action MARS
+  with trustformer.CanHavePeripheryExample_MarsV2 // Enables optionally adding MarsV2
 {
   override lazy val module = new DigitalTopModule(this)
 }
