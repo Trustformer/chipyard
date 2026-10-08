@@ -47,3 +47,20 @@ class TFMarsV2Config extends Config(
   new freechips.rocketchip.rocket.WithNHugeCores(1) ++
   new chipyard.config.AbstractConfig)
 // DOC include end: MarsV2Config
+
+// DOC include start: MarsV2TinyConfig
+// MarsV2 next to a TinyRocket (RV32IMAC, M+U modes with PMP, no FPU, no data cache)
+// whose only memory is a 128 KiB scratchpad: the microcontroller-class host for the
+// firmware comparison.
+class TFMarsV2TinyConfig extends Config(
+  new trustformer.WithExample_MarsV2(address=0x4000) ++
+  new trustformer.WithMarsSeed() ++
+  new freechips.rocketchip.rocket.RocketCoreConfig(_.copy(useUser = true)) ++  // for the PMP gate
+  new freechips.rocketchip.rocket.WithL1DCacheSets(2048) ++       // 128 KiB scratchpad
+  new testchipip.soc.WithNoScratchpads ++
+  new freechips.rocketchip.subsystem.WithIncoherentBusTopology ++
+  new freechips.rocketchip.subsystem.WithNBanks(0) ++
+  new freechips.rocketchip.subsystem.WithNoMemPort ++
+  new freechips.rocketchip.rocket.With1TinyCore ++
+  new chipyard.config.AbstractConfig)
+// DOC include end: MarsV2TinyConfig
