@@ -64,3 +64,18 @@ class TFMarsV2TinyConfig extends Config(
   new freechips.rocketchip.rocket.With1TinyCore ++
   new chipyard.config.AbstractConfig)
 // DOC include end: MarsV2TinyConfig
+
+// The two MarsV2 SoCs without MARS: the baselines for the timing comparison.
+class TFBaseConfig extends Config(
+  new freechips.rocketchip.rocket.WithNHugeCores(1) ++
+  new chipyard.config.AbstractConfig)
+
+class TFBaseTinyConfig extends Config(
+  new freechips.rocketchip.rocket.RocketCoreConfig(_.copy(useUser = true)) ++
+  new freechips.rocketchip.rocket.WithL1DCacheSets(2048) ++
+  new testchipip.soc.WithNoScratchpads ++
+  new freechips.rocketchip.subsystem.WithIncoherentBusTopology ++
+  new freechips.rocketchip.subsystem.WithNBanks(0) ++
+  new freechips.rocketchip.subsystem.WithNoMemPort ++
+  new freechips.rocketchip.rocket.With1TinyCore ++
+  new chipyard.config.AbstractConfig)
